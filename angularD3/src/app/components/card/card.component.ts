@@ -11,8 +11,6 @@ export class CardComponent {
   @Input() postBody!:string
   @Input() postActive!:boolean
   @Input() postType!:string
-  ngOnInit() {
 
-  }
 
 }
