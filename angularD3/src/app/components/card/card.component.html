@@ -8,7 +8,7 @@
   <div class="card-body">
     <h5 class="card-title">{{postTitle}}</h5>
     <p class="card-text">{{postBody}}</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <button (click)="modifyPost(postId, postBody, postTitle, postType, !postActive)" class="btn btn-success">Inverti</button>
   </div>
   <div class="card-footer text-body-secondary">
 {{postType}}
