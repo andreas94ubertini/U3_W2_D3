@@ -1,5 +1,5 @@
-<div class="card text-center"
-     [ngClass]="{'bg-warning': postType==='news','bg-primary': postType==='education', 'bg-black text-light': postType==='politics'}"
+<div class="card text-center mt-3"
+     [ngClass]="{'bg-warning': postType==='news','bg-primary': postType==='education', 'bg-dark text-light': postType==='politics'}"
 
 >
   <div class="card-header">
@@ -8,10 +8,10 @@
   <div class="card-body">
     <h5 class="card-title">{{postTitle}}</h5>
     <p class="card-text">{{postBody}}</p>
-    <button *ngIf="postActive" (click)="modifyPost(postId, postBody, postTitle, postType, !postActive)" class="btn btn-success">Disattiva</button>
+    <button *ngIf="postActive" (click)="modifyPost(postId, postBody, postTitle, postType, !postActive)" class="btn btn-danger">Disattiva</button>
     <button *ngIf="!postActive" (click)="modifyPost(postId, postBody, postTitle, postType, !postActive)" class="btn btn-success">Attiva</button>
   </div>
-  <div class="card-footer text-body-secondary">
+  <div class="card-footer">
 {{postType}}
   </div>
 </div>

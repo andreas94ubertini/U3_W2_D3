@@ -22,7 +22,7 @@ export class PostService {
 
   modifyPost(data: Post, id: number){
     fetch(`http://localhost:3000/db/${id}`, {
-      method: "PUT", // or 'PUT'
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
