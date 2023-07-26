@@ -11,10 +11,6 @@ export class ActivePostsComponent {
   activePosts:Post[] = this.getActivePosts()
   constructor(private postSvc:PostService){}
 
-   getPosts():Post[]{
-     this.postSvc.fetchPosts()
-     return this.postSvc.getPosts()
-   }
   getActivePosts():Post[]{
     console.log(this.activePosts)
     return this.postSvc.getActivePosts()

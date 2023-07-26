@@ -9,12 +9,14 @@ import { PostService } from 'src/app/post.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  posts:Post[] = this.getPosts()
-  constructor( private postSvc:PostService){}
-
-  getPosts():Post[]{
-    this.postSvc.fetchPosts()
-    return this.postSvc.getPosts()
+  posts!:Post[]
+  constructor( private postSvc:PostService){
+    this.postSvc.fetchPosts().then(()=>{
+      this.posts = this.postSvc.posts
+    })
   }
+
+
+
 
 }

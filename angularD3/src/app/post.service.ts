@@ -6,19 +6,17 @@ import { Post } from './models/post';
 })
 export class PostService {
 
-  posts:Post[] = []
+  posts!:Post[]
   activePosts:Post[] = []
   inactivePosts:Post[] = []
   constructor(){}
 
   fetchPosts(){
-    fetch('http://localhost:3000/db')
+    return fetch('http://localhost:3000/db')
     .then(res => res.json())
-    .then(data  => data['db'].forEach((element:Post) => {
-      const newPost = new Post(element.id, element.body, element.title, element.type, element.active)
-      this.posts.push(newPost)
+    .then((data) => {
+      this.posts = data['db']
     })
-    )
     .catch(err => alert(err))
   }
 
@@ -36,10 +34,6 @@ export class PostService {
     })
   }
 
-  getPosts():Post[]{
-    this.posts = []
-    return this.posts
-  }
   getActivePosts():Post[]{
     this.fetchPosts()
     this.activePosts = this.posts.filter(el=>el.active)
