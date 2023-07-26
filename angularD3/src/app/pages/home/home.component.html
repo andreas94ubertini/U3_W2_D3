@@ -1,0 +1,23 @@
+<div class="container d-flex justify-content-evenly mb-3" role="group" aria-label="Basic example">
+  <a class="btn btn-primary" [routerLink]="['/active-posts']">Active Posts</a>
+  <a class="btn btn-primary" [routerLink]="['/inactive-posts']">Inactive Posts</a>
+</div>
+<div class="container">
+<div class="row">
+  <div class="col-6" *ngFor="let post of posts">
+    <div class="card text-center">
+      <div class="card-header">
+        Post: {{post.id}}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{post.title}}</h5>
+        <p class="card-text">{{post.body}}</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+      <div class="card-footer text-body-secondary">
+        {{post.type}}
+      </div>
+    </div>
+  </div>
+</div>
+</div>
