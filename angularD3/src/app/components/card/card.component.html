@@ -1,4 +1,7 @@
-<div class="card text-center">
+<div class="card text-center"
+     [ngClass]="{'bg-warning': postType==='news','bg-primary': postType==='education', 'bg-black text-light': postType==='politics'}"
+
+>
   <div class="card-header">
     Post: {{postId}}
   </div>
