@@ -9,13 +9,11 @@ import { PostService } from 'src/app/post.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  posts!:Post[]
-  constructor( private postSvc:PostService){
-    this.postSvc.fetchPosts().then(()=>{
-      this.posts = this.postSvc.posts
-    })
+  posts:Post[] = this.getPosts()
+  constructor( private postSvc:PostService){}
+  getPosts():Post[]{
+    this.postSvc.ngOnInit()
+    return this.postSvc.getPosts()
   }
-
-
 
 }

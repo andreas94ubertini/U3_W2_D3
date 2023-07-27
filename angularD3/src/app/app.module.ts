@@ -10,6 +10,9 @@ import { ActivePostsComponent } from './pages/active-posts/active-posts.componen
 import { InactivePostsComponent } from './pages/inactive-posts/inactive-posts.component';
 import { Page404Component } from './pages/page404/page404.component';
 import { CardComponent } from './components/card/card.component';
+import { UpperCasePipe } from './upper-case.pipe';
+import { TextDecoDirective } from './text-deco.directive';
+import { ShowDetailsDirective } from './show-details.directive';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { CardComponent } from './components/card/card.component';
     ActivePostsComponent,
     InactivePostsComponent,
     Page404Component,
-    CardComponent
+    CardComponent,
+    UpperCasePipe,
+    TextDecoDirective,
+    ShowDetailsDirective
   ],
   imports: [
     BrowserModule,

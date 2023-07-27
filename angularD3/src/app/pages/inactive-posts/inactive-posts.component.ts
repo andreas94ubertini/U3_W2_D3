@@ -13,7 +13,7 @@ export class InactivePostsComponent {
   constructor( private postSvc:PostService){}
 
   getInactivePosts():Post[]{
-
+    // this.postSvc.ngOnInit()
     return this.postSvc.getInactivePosts()
   }
 }

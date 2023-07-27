@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 import{PostService} from "../../post.service";
 import {Post} from "../../models/post";
 
@@ -8,6 +8,7 @@ import {Post} from "../../models/post";
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent {
+  @Input()postObj!:Post
   @Input() postId!:number
   @Input() postTitle!:string
   @Input() postBody!:string
@@ -15,8 +16,10 @@ export class CardComponent {
   @Input() postType!:string
  constructor(private postSvc:PostService) {
  }
-  modifyPost(id:number, body:string, title:string, type:string, active:boolean){
-     const data = new Post(id, body, title, type, active)
-    this.postSvc.modifyPost(data, id)
+  modifyPost(data:Post){
+     const post:Post = data
+    this.postSvc.modifyPost(post)
 }
+
 }
+

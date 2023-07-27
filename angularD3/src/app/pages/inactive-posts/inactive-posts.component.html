@@ -1,13 +1,19 @@
 <div class="container">
   <div class="row">
     <div class="col-6" *ngFor="let post of inactivePosts">
-      <app-card
+      <app-card *ngIf="!post.active"
+        [postObj] = "post"
         [postId]="post.id"
         [postActive]="post.active"
         [postTitle]="post.title"
         [postBody]="post.body"
         [postType]="post.type"
-      ></app-card>
+      >
+      </app-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
     </div>
   </div>
 </div>

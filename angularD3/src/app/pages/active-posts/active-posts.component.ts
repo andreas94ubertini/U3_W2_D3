@@ -12,7 +12,10 @@ export class ActivePostsComponent {
   constructor(private postSvc:PostService){}
 
   getActivePosts():Post[]{
-    console.log(this.activePosts)
+    // this.postSvc.ngOnInit()
+    // this.postSvc.getPosts()
+    // console.log(this.postSvc.getActivePosts(), 'chi')
     return this.postSvc.getActivePosts()
   }
+
 }

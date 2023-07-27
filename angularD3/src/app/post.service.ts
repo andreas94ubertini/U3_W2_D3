@@ -1,52 +1,56 @@
-import { Injectable } from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import { Post } from './models/post';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PostService {
+export class PostService implements OnInit{
 
   posts!:Post[]
-  activePosts:Post[] = []
-  inactivePosts:Post[] = []
+  activePosts!:Post[]
+  inactivePosts!:Post[]
   constructor(){}
-
-  fetchPosts(){
-    return fetch('http://localhost:3000/db')
-    .then(res => res.json())
-    .then((data) => {
-      this.posts = data['db']
-    })
-    .catch(err => alert(err))
+  ngOnInit(){
+    fetch('http://localhost:3000/db')
+      .then(res => res.json())
+      .then(data  => data['db'].forEach((element:Post) => {
+          this.posts.push(element)
+        })
+      )
+      .catch(err => alert(err))
+  }
+  getPosts():Post[]{
+    this.posts = []
+    return this.posts
   }
 
-  modifyPost(data: Post, id: number){
-    fetch(`http://localhost:3000/db/${id}`, {
-      method: "PUT",
+
+  modifyPost(post:Post){
+    post.active = post.active === true ? false : true
+    fetch(`http://localhost:3000/db/${post.id}`, {
+      method: 'PUT',
       headers: {
-        "Content-Type": "application/json",
+        'content-type' : 'application/json'
       },
-      body: JSON.stringify(data),
-    }).then(data=>{
-      return data.json()
-    }).then(res=>{
-      console.log(res)
-    })
+      body: JSON.stringify(post)
+    }).then(res => res.json())
+    // .then(data => console.log(data)
+    // )
   }
+
 
   getActivePosts():Post[]{
-    this.fetchPosts()
-    this.activePosts = this.posts.filter(el=>el.active)
-    console.log(this.activePosts, 'this')
-    this.posts = []
+    this.activePosts = this.posts.filter(post => post.active === true)
     return this.activePosts
   }
   getInactivePosts():Post[]{
-    this.fetchPosts()
     this.inactivePosts = this.posts.filter(el=>el.active===false)
     console.log(this.inactivePosts, 'this')
-    this.posts = []
     return this.inactivePosts
   }
 
-}
+  }
+
+
+
+
