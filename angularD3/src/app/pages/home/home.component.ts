@@ -9,11 +9,20 @@ import { PostService } from 'src/app/post.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+  toShow!:Post[]
   posts:Post[] = this.getPosts()
   constructor( private postSvc:PostService){}
   getPosts():Post[]{
     this.postSvc.ngOnInit()
     return this.postSvc.getPosts()
   }
-
+  getThisPost(post:Post){
+    return this.toShow = this.posts.filter(el => el.id === post.id)
+  }
+  riceviDati(value:Post){
+    console.log(value, 'ricevuto')
+    this.posts = this.posts.filter(el => el.id === value.id)
+  }
 }
+
+

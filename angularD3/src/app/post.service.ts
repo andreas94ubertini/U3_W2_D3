@@ -9,6 +9,7 @@ export class PostService implements OnInit{
   posts!:Post[]
   activePosts!:Post[]
   inactivePosts!:Post[]
+  toShow!:Post[]
   constructor(){}
   ngOnInit(){
     fetch('http://localhost:3000/db')
@@ -48,7 +49,12 @@ export class PostService implements OnInit{
     console.log(this.inactivePosts, 'this')
     return this.inactivePosts
   }
+  riceviDati(value:Post){
+    console.log(value, 'ricevuto')
+  }
+getThisPost(post:Post){
 
+}
   }
 
 

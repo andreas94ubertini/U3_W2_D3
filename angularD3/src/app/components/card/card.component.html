@@ -2,7 +2,7 @@
      [ngClass]="{'bg-warning': postType==='news','bg-primary': postType==='education', 'bg-dark text-light': postType==='politics'}"
 
 >
-  <div class="card-header" appTextDeco>
+  <div class="card-header" (click)="getThisPost(postObj)" appTextDeco >
     Post: {{postId}}
   </div>
   <div class="card-body">
